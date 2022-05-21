@@ -13,6 +13,7 @@ int main()
 {
 
     tree_generate();
+    printf("\n");
     print_tree();
     while(1)
     {
@@ -31,14 +32,11 @@ int main()
             sscanf(input_string,"A(%[^')'])",name1);
             x=name_to_index(name1);
             subtree_node_print(x);
-
-          //  printf("%d is called\n",x);
         }else if(input_string[0]=='D')
         {
             sscanf(input_string,"D(%[^')'])",name1);
             x=name_to_index(name1);
             path_to_root_print(x);
-
         }else if(input_string[0]=='R')
         {
             sscanf(input_string,"R(%[^’,’],%[^’)’])",name1,name2);
@@ -51,7 +49,7 @@ int main()
 
 void subtree_node_print(int x)
 {
-    printf("\nA(%s) = ",tree[x]);
+    printf("A(%s) = ",tree[x]);
     if(find_dad(x)==-1&&find_mom(x)==-1)
     {
         printf("Unknown\n");
@@ -74,7 +72,7 @@ void subtree_node_print(int x)
 
 void path_to_root_print(int x)
 {
-    printf("\nD(%s) = ",tree[x]);
+    printf("D(%s) = ",tree[x]);
     if(find_child(x)==-1)
     {
         printf("Unknown\n");
@@ -90,8 +88,7 @@ void path_to_root_print(int x)
 }
 void relation_print(int x, int y)
 {
-    printf("\nR(%s,%s) = ",tree[x],tree[y]);
-   // printf("\nR(%s,%s) = ",tree[x],tree[y]);
+    printf("R(%s,%s) = ",tree[x],tree[y]);
     int a = find_depths(y) - find_depths(x);
     int cur_node = x;
     printf("%s -> ",tree[x]);
